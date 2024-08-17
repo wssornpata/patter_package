@@ -7,7 +7,11 @@ public class Shape implements ShapeInterface {
         this.name = name;
     }
     
+    public String getName(){
+        return name;
+    }
+
     public void printShape() {
-        System.out.println("This is a " + name);
+        System.out.println("This is a " + getName());
     }
 }
