@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class ex1 {
     public static void main(String[] args) {
+        PatternController patternController = new PatternController();
         try {
             Scanner scanner = new Scanner(System.in);
             int n = 1;
@@ -16,12 +17,12 @@ public class ex1 {
                     break;
                 }
 
-                if (n % 2 == 0) {
+                if (!patternController.isOdd(n)) {
                     System.out.println("n is not an odd number.");
                     continue;
                 }
 
-                if (n <= 0 || n > 50) {
+                if (!patternController.isValidRange(n)) {
                     System.out.println("n is not between 1 and 50.");
                     continue;
                 }
