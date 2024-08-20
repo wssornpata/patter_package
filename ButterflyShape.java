@@ -13,54 +13,51 @@ class ButterflyShape extends Shape {
     @Override
     public void printShape() {
         int space = (2 * n)+1;
-        String str = new String();
+        StringBuffer  str = new StringBuffer ();
         // Upper part
         for (int i = 0; i < n; i++) {
-            str = "";
-            str = printStarNormal(str, i);
-            str = printSpace(str, space);
-            str = printStarNormal(str, i);
+            str.setLength(0);
+            printStarNormal(str, i);
+            printSpace(str, space);
+            printStarNormal(str, i);
             space -= 2;
             out.println(str);
         }
 
         // Middle part
-        str = "";
-        str = printStarNormal(str, n);
-        str += "-";
+        str.setLength(0);
+        printStarNormal(str, n);
+        str.append("-");
         space = 3;
-        str = printStarNormal(str, n);
+        printStarNormal(str, n);
         out.println(str);
 
         // Lower part
         for (int i = 0; i < n; i++) {
-            str = "";
-            str = printStarReverse(str, i);
-            str = printSpace(str, space);
-            str = printStarReverse(str, i);
+            str.setLength(0);
+            printStarReverse(str, i);
+            printSpace(str, space);
+            printStarReverse(str, i);
             space += 2;
             out.println(str);
         }
     }
 
-    private String printStarNormal(String str, int length) {
+    private void printStarNormal(StringBuffer str, int length) {
         for (int j = 0; j < length; j++) {
-            str += "*";
+            str.append("*");
         }
-        return str;
     }
 
-    private String printStarReverse(String str, int length) {
+    private void printStarReverse(StringBuffer str, int length) {
         for (int j = (n - 1) - length; j > 0; j--) {
-            str += "*";
+            str.append("*");
         }
-        return str;
     }
 
-    private String printSpace(String str, int length) {
+    private void printSpace(StringBuffer str, int length) {
         for (int j = 0; j < length; j++) {
-            str += " ";
+            str.append(" ");
         }
-        return str;
     }
 }
