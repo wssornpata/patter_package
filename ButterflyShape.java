@@ -1,7 +1,5 @@
 package pattern_package;
 
-import static java.lang.System.out;
-
 class ButterflyShape extends Shape {
     private int n;
 
@@ -21,7 +19,7 @@ class ButterflyShape extends Shape {
             printSpace(str, space);
             printStarNormal(str, i);
             space -= 2;
-            out.println(str);
+            System.out.println(str);
         }
 
         // Middle part
@@ -30,7 +28,7 @@ class ButterflyShape extends Shape {
         str.append("-");
         space = 3;
         printStarNormal(str, n);
-        out.println(str);
+        System.out.println(str);
 
         // Lower part
         for (int i = 0; i < n; i++) {
@@ -39,7 +37,7 @@ class ButterflyShape extends Shape {
             printSpace(str, space);
             printStarReverse(str, i);
             space += 2;
-            out.println(str);
+            System.out.println(str);
         }
     }
 
