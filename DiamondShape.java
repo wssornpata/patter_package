@@ -1,44 +1,53 @@
 package pattern_package;
 
 class DiamondShape extends Shape {
+    private char major = '*';
+    private char minor = ' ';
     private int n;
 
     public DiamondShape(int n) {
-        super("DiamondShape");
         this.n = n;
+    }
+
+    public DiamondShape(int n, char major, char minor) {
+        this.n = n;
+        this.major = major;
+        this.minor = minor;
     }
 
     @Override
     public void printShape() {
-        boolean isReverse = false;
-        int space = n / 2;
-        int star = 1;
-        StringBuffer str = new StringBuffer();
-        for (int i = 0; i < n; i++) {
-            str.setLength(0);
-            if (!isReverse) {
-                for (int k = 0; k < space; k++) {
-                    str.append(" ");
-                }
-                for (int l = 0; l < star; l++) {
-                    str.append("*");
-                }
-                space--;
-                star += 2;
-            } else {
-                for (int k = space; k > 0; k--) {
-                    str.append(" ");
-                }
-                for (int l = star; l > 0; l--) {
-                    str.append("*");
-                }
-                space++;
-                star -= 2;
-            }
-            if (space == 0) {
-                isReverse = true;
-            }
-            System.out.println(str);
+        int pyramidHeight = n / 2;
+        int minorInitSize = n / 2;
+        int majorInitCount = 1;
+
+        StringBuilder pyramid = pyramidBuilder(pyramidHeight, majorInitCount, minorInitSize);
+
+        StringBuilder lowerPyramid = flipVertical(pyramid);
+
+        int middleSize = n;
+        for (int i = 0; i < middleSize; i++) {
+            pyramid.append(major);
         }
+        pyramid.append("\n");
+
+        pyramid.append(lowerPyramid);
+        System.out.print(pyramid);
+    }
+
+    private StringBuilder pyramidBuilder(int pyramidHeight, int majorInitCount, int minorInitSize) {
+        StringBuilder pyramid = new StringBuilder();
+        for (int i = 0; i < pyramidHeight; i++) {
+            for (int k = 0; k < minorInitSize; k++) {
+                pyramid.append(minor);
+            }
+            for (int l = 0; l < majorInitCount; l++) {
+                pyramid.append(major);
+            }
+            pyramid.append("\n");
+            minorInitSize--;
+            majorInitCount += 2;
+        }
+        return pyramid;
     }
 }
